@@ -1,18 +1,11 @@
-// Entry point for the application
-import express from "express";
-import config from "./config.js";
-// TODO: Import the routes
+import faker from "faker";
 
-const app = express();
+console.log(faker.name.findName());
 
-app.get("/", (_, res) => {
-  res.send("Hello World");
-});
+const data = Array.from({ length: 500 }, () => ({
+  name: faker.name.findName(),
+  phone: faker.phone.phoneNumber(),
+  email: faker.internet.email(),
+}));
 
-// TODO: Use json middleware (if needed)
-
-// TODO: Mount the routes (maybe 🤔 /api)
-
-app.listen(config.port, () => {
-  console.log(`Server 🏃🏾‍♂️ at: http://localhost:${config.port}`);
-});
+console.log(data);
